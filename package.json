@@ -1,21 +1,19 @@
 {
-  "name": "react-starterify",
-  "version": "2.2.1",
-  "description": "React JS application skeleton using Browserify and other awesome tools",
+  "name": "React-Bootstrap",
+  "version": "1.0.0",
+  "description": "React JS application bootstrap inspired by react-starterify by https://github.com/Granze",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Granze/react-starterify"
+    "url": "https://github.com/5um1th/React-Bootstrap"
   },
   "keywords": [
     "gulp",
     "react",
     "browserify",
-    "seed",
     "boilerplate",
     "kickstarter",
     "ES6",
-    "ES2015",
     "babel",
     "ava"
   ],
@@ -25,12 +23,9 @@
     "deploy": "gulp deploy",
     "test": "ava --tap | tap-nyan"
   },
-  "author": "Maurizio Mangione",
+  "author": "Sumith Jitta",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Granze/react-starterify/issues"
-  },
-  "homepage": "https://github.com/Granze/react-starterify",
+  "homepage": "https://github.com/5um1th/React-Bootstrap",
   "dependencies": {
     "history": "^1.17.0",
     "react": "^0.14.0",

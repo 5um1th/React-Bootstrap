@@ -23465,8 +23465,18 @@ var App = function (_React$Component) {
 
         _this.state = {
             hCard: {
-                firstname: 'Sumith',
-                lastname: 'Jitta'
+                givenname: 'Sumith',
+                surname: 'Jitta',
+                email: 'sumith@sumith.com',
+                phone: '0427038914',
+                houseno: '31',
+                street: '66-70 Parramatta Road',
+                suburb: 'Camperdown',
+                state: 'NSW',
+                postcode: '2050',
+                country: 'Australia',
+                avatar: 'http://hcard-builder.s3-ap-southeast-2.amazonaws.com/dist/images/default-avatar.png'
+
             }
         };
         return _this;
@@ -23484,9 +23494,17 @@ var App = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
-                _react2.default.createElement(_HCardPreview2.default, { hCard: this.state.hCard }),
-                _react2.default.createElement(_HCardForm2.default, { onChange: this.handleChange.bind(this), hCard: this.state.hCard })
+                { className: 'row' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'one-half column wrapper' },
+                    _react2.default.createElement(_HCardForm2.default, { onChange: this.handleChange.bind(this), hCard: this.state.hCard })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'one-half column wrapper preview' },
+                    _react2.default.createElement(_HCardPreview2.default, { hCard: this.state.hCard })
+                )
             );
         }
     }]);
@@ -23502,7 +23520,7 @@ exports.default = App;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = require("react");
@@ -23518,44 +23536,185 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var HCardForm = function (_React$Component) {
-    _inherits(HCardForm, _React$Component);
+  _inherits(HCardForm, _React$Component);
 
-    function HCardForm(props) {
-        _classCallCheck(this, HCardForm);
+  function HCardForm(props) {
+    _classCallCheck(this, HCardForm);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HCardForm).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HCardForm).call(this, props));
 
-        _this.state = {
-            hCard: props.hCard
-        };
-        return _this;
+    _this.state = {
+      hCard: props.hCard
+    };
+    return _this;
+  }
+
+  _createClass(HCardForm, [{
+    key: "handleChange",
+    value: function handleChange(evt) {
+      this.state.hCard[evt.target.name] = evt.target.value;
+      this.props.onChange(this.state.hCard);
     }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "form",
+        null,
+        _react2.default.createElement(
+          "h1",
+          null,
+          "hCard Builder"
+        ),
+        _react2.default.createElement(
+          "fieldset",
+          null,
+          _react2.default.createElement(
+            "legend",
+            null,
+            "Personal Details"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "givenname" },
+                "Given Name"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.givenname, name: "givenname", onChange: this.handleChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "surname" },
+                "Surname"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.surname, name: "surname", onChange: this.handleChange.bind(this) })
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "email" },
+                "Email"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "email", defaultValue: this.state.hCard.email, name: "email", onChange: this.handleChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "phone" },
+                "Phone"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.phone, name: "phone", onChange: this.handleChange.bind(this) })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "fieldset",
+          null,
+          _react2.default.createElement(
+            "legend",
+            null,
+            "Address"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "houseno" },
+                "House Name or #"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.houseno, name: "houseno", onChange: this.handleChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "street" },
+                "Street"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.street, name: "street", onChange: this.handleChange.bind(this) })
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "suburb" },
+                "Suburb"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.suburb, name: "suburb", onChange: this.handleChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "state" },
+                "State"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.state, name: "state", onChange: this.handleChange.bind(this) })
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "postcode" },
+                "Postcode"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.postcode, name: "postcode", onChange: this.handleChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "six columns" },
+              _react2.default.createElement(
+                "label",
+                { "for": "country" },
+                "Country"
+              ),
+              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.country, name: "state", onChange: this.handleChange.bind(this) })
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    _createClass(HCardForm, [{
-        key: "handleChange",
-        value: function handleChange(evt) {
-            this.state.hCard[evt.target.name] = evt.target.value;
-            this.props.onChange(this.state.hCard);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement("input", { type: "text", name: "firstname", defaultValue: this.state.hCard.firstname, onChange: this.handleChange.bind(this) }),
-                _react2.default.createElement("input", { type: "text", name: "lastname", defaultValue: this.state.hCard.lastname, onChange: this.handleChange.bind(this) })
-            );
-        }
-    }]);
-
-    return HCardForm;
+  return HCardForm;
 }(_react2.default.Component);
 
 exports.default = HCardForm;
 
 },{"react":207}],211:[function(require,module,exports){
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23563,7 +23722,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23588,21 +23747,115 @@ var HCardPreview = function (_React$Component) {
     }
 
     _createClass(HCardPreview, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                null,
-                ' ',
+                "div",
+                { className: "hCard" },
                 _react2.default.createElement(
-                    'p',
+                    "h2",
                     null,
-                    this.state.hCard.firstname
+                    "HCARD PREVIEW"
                 ),
                 _react2.default.createElement(
-                    'p',
-                    null,
-                    this.state.hCard.lastname
+                    "div",
+                    { className: "hCard-wrapper" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "hCard-header" },
+                        _react2.default.createElement(
+                            "h3",
+                            null,
+                            this.state.hCard.givenname,
+                            " ",
+                            this.state.hCard.surname
+                        ),
+                        _react2.default.createElement("img", { src: this.state.hCard.avatar, id: "imagePreview" })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "hCard-body" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "three columns hCard-body-label" },
+                                "Email"
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "nine columns hCard-body-value no-transform" },
+                                this.state.hCard.email
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "three columns hCard-body-label" },
+                                "Phone"
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "nine columns hCard-body-value" },
+                                this.state.hCard.phone
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "three columns hCard-body-label" },
+                                "Address"
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "nine columns hCard-body-value" },
+                                this.state.hCard.houseno,
+                                " ",
+                                this.state.hCard.street
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement("div", { className: "three columns hCard-body-label" }),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "nine columns hCard-body-value" },
+                                this.state.hCard.suburb,
+                                " ",
+                                this.state.hCard.state
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "two columns hCard-body-label" },
+                                "Postcode"
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "four columns hCard-body-value" },
+                                this.state.hCard.postcode
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "two columns hCard-body-label" },
+                                "Country"
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "four columns hCard-body-value" },
+                                this.state.hCard.country
+                            )
+                        )
+                    )
                 )
             );
         }
