@@ -32,3 +32,4 @@ export default class App extends React.Component {
                 <div className="one-half column wrapper preview"><HCardPreview hCard={this.state.hCard}/></div></div>);
     }
 }
+

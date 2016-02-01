@@ -507,7 +507,12 @@ body {
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300; }
@@ -707,7 +712,8 @@ ul {
 ol {
   list-style: decimal inside; }
 
-ol, ul {
+ol,
+ul {
   padding-left: 0;
   margin-top: 0; }
 
@@ -852,7 +858,7 @@ there.
         border: 1px solid #9a9a9a;
         height: 100px;
         width: 80px;
-        background: #fff; }
+        background: #ffffff; }
     .preview .hCard-body {
       margin: 25px 25px 0px;
       width: 85%; }
@@ -893,6 +899,54 @@ form {
     color: #2c3e50;
     font-size: 12px; }
 
+.button-primary.button-create {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #3498db !important;
+  color: #fff;
+  font-family: "Merriweather Sans", sans-serif;
+  border-bottom: 2px solid #2980b9 !important;
+  text-transform: none;
+  font-size: 20px !important;
+  font-weight: normal; }
+  .button-primary.button-create:hover {
+    background-color: #3498db;
+    color: #fff; }
+
+.button-primary.button-file {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #627b8b;
+  color: #fff;
+  font-family: "Merriweather Sans", sans-serif;
+  border-bottom: 2px solid #3f515d;
+  font-size: 20px;
+  display: block;
+  padding-top: 10px;
+  height: 26px;
+  line-height: 18px;
+  text-align: center; }
+  .button-primary.button-file:hover {
+    background-color: #627b8b;
+    color: #fff; }
+
+.button-primary.button-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block; }
+
 html {
   position: relative;
   min-height: 100%; }
@@ -900,7 +954,10 @@ html {
 body {
   font-family: "Merriweather", serif; }
 
-h1, h2, legend, label {
+h1,
+h2,
+legend,
+label {
   font-family: "Merriweather Sans", sans-serif; }
 
 h1 {

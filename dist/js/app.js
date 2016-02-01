@@ -23421,9 +23421,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 window.React = _react2.default;
 
 (0, _reactDom.render)(_react2.default.createElement(
-  _reactRouter.Router,
-  null,
-  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
+    _reactRouter.Router,
+    null,
+    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
 ), document.getElementById('content'));
 
 },{"./components/App":209,"react":207,"react-dom":25,"react-router":45}],209:[function(require,module,exports){
@@ -23514,13 +23514,163 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"./HCardForm":210,"./HCardPreview":211,"react":207}],210:[function(require,module,exports){
+},{"./HCardForm":210,"./HCardPreview":212,"react":207}],210:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _HCardFormInput = require('./HCardFormInput');
+
+var _HCardFormInput2 = _interopRequireDefault(_HCardFormInput);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HCardForm = function (_React$Component) {
+    _inherits(HCardForm, _React$Component);
+
+    function HCardForm(props) {
+        _classCallCheck(this, HCardForm);
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HCardForm).call(this, props));
+
+        _this.state = {
+            hCard: props.hCard
+        };
+        return _this;
+    }
+
+    _createClass(HCardForm, [{
+        key: 'handleChange',
+        value: function handleChange(evt) {
+            this.state.hCard[evt.target.name] = evt.target.value;
+            this.props.onChange(this.state.hCard);
+        }
+    }, {
+        key: 'handleInputUpdate',
+        value: function handleInputUpdate(name, value) {
+            this.state.hCard[name] = value;
+            this.props.onChange(this.state.hCard);
+        }
+    }, {
+        key: 'handleAvatar',
+        value: function handleAvatar(evt) {
+            var reader = new FileReader();
+
+            reader.onload = function (evt) {
+                this.state.hCard['avatar'] = evt.target.result;
+                this.props.onChange(this.state.hCard);
+            }.bind(this);
+
+            reader.readAsDataURL(evt.target.files[0]);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                null,
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'hCard Builder'
+                ),
+                _react2.default.createElement(
+                    'fieldset',
+                    null,
+                    _react2.default.createElement(
+                        'legend',
+                        null,
+                        'Personal Details'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'givenname', label: 'Given Name', type: 'text', value: this.state.hCard.givenname, onChange: this.handleInputUpdate.bind(this) }),
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'surname', label: 'Surname', type: 'text', value: this.state.hCard.surname, onChange: this.handleInputUpdate.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'email', label: 'Email', type: 'email', value: this.state.hCard.email, onChange: this.handleInputUpdate.bind(this) }),
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'phone', label: 'Phone', type: 'text', value: this.state.hCard.phone, onChange: this.handleInputUpdate.bind(this) })
+                    )
+                ),
+                _react2.default.createElement(
+                    'fieldset',
+                    null,
+                    _react2.default.createElement(
+                        'legend',
+                        null,
+                        'Address'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'houseno', label: 'House Name or #', type: 'text', value: this.state.hCard.houseno, onChange: this.handleInputUpdate.bind(this) }),
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'street', label: 'Street', type: 'text', value: this.state.hCard.street, onChange: this.handleInputUpdate.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'suburb', label: 'Suburb', type: 'text', value: this.state.hCard.suburb, onChange: this.handleInputUpdate.bind(this) }),
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'state', label: 'State', type: 'text', value: this.state.hCard.state, onChange: this.handleInputUpdate.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'postcode', label: 'Postcode', type: 'text', value: this.state.hCard.postcode, onChange: this.handleInputUpdate.bind(this) }),
+                        _react2.default.createElement(_HCardFormInput2.default, { name: 'country', label: 'Country', type: 'text', value: this.state.hCard.country, onChange: this.handleInputUpdate.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'six columns' },
+                            _react2.default.createElement(
+                                'span',
+                                { className: 'button-primary button-file' },
+                                'Upload Avatar',
+                                _react2.default.createElement('input', { type: 'file', onChange: this.handleAvatar.bind(this) })
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'six columns' },
+                            _react2.default.createElement('input', { className: 'button-primary button-create', type: 'submit', value: 'Create hCard' })
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return HCardForm;
+}(_react2.default.Component);
+
+exports.default = HCardForm;
+
+},{"./HCardFormInput":211,"react":207}],211:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = require("react");
@@ -23535,185 +23685,42 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HCardForm = function (_React$Component) {
-  _inherits(HCardForm, _React$Component);
+var HCardFormInput = function (_React$Component) {
+    _inherits(HCardFormInput, _React$Component);
 
-  function HCardForm(props) {
-    _classCallCheck(this, HCardForm);
+    function HCardFormInput(props) {
+        _classCallCheck(this, HCardFormInput);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HCardForm).call(this, props));
-
-    _this.state = {
-      hCard: props.hCard
-    };
-    return _this;
-  }
-
-  _createClass(HCardForm, [{
-    key: "handleChange",
-    value: function handleChange(evt) {
-      this.state.hCard[evt.target.name] = evt.target.value;
-      this.props.onChange(this.state.hCard);
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(HCardFormInput).call(this, props));
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "form",
-        null,
-        _react2.default.createElement(
-          "h1",
-          null,
-          "hCard Builder"
-        ),
-        _react2.default.createElement(
-          "fieldset",
-          null,
-          _react2.default.createElement(
-            "legend",
-            null,
-            "Personal Details"
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "row" },
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "givenname" },
-                "Given Name"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.givenname, name: "givenname", onChange: this.handleChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "surname" },
-                "Surname"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.surname, name: "surname", onChange: this.handleChange.bind(this) })
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "row" },
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "email" },
-                "Email"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "email", defaultValue: this.state.hCard.email, name: "email", onChange: this.handleChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "phone" },
-                "Phone"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.phone, name: "phone", onChange: this.handleChange.bind(this) })
-            )
-          )
-        ),
-        _react2.default.createElement(
-          "fieldset",
-          null,
-          _react2.default.createElement(
-            "legend",
-            null,
-            "Address"
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "row" },
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "houseno" },
-                "House Name or #"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.houseno, name: "houseno", onChange: this.handleChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "street" },
-                "Street"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.street, name: "street", onChange: this.handleChange.bind(this) })
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "row" },
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "suburb" },
-                "Suburb"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.suburb, name: "suburb", onChange: this.handleChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "state" },
-                "State"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.state, name: "state", onChange: this.handleChange.bind(this) })
-            )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "row" },
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "postcode" },
-                "Postcode"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.postcode, name: "postcode", onChange: this.handleChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              "div",
-              { className: "six columns" },
-              _react2.default.createElement(
-                "label",
-                { "for": "country" },
-                "Country"
-              ),
-              _react2.default.createElement("input", { className: "u-full-width", type: "text", defaultValue: this.state.hCard.country, name: "state", onChange: this.handleChange.bind(this) })
-            )
-          )
-        )
-      );
-    }
-  }]);
 
-  return HCardForm;
+    _createClass(HCardFormInput, [{
+        key: "handleChange",
+        value: function handleChange(evt) {
+            this.props.onChange(evt.target.name, evt.target.value);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "six columns" },
+                _react2.default.createElement(
+                    "label",
+                    { "for": this.props.name },
+                    this.props.label
+                ),
+                _react2.default.createElement("input", { className: "u-full-width", type: this.props.type, defaultValue: this.props.value, name: this.props.name, onChange: this.handleChange.bind(this) })
+            );
+        }
+    }]);
+
+    return HCardFormInput;
 }(_react2.default.Component);
 
-exports.default = HCardForm;
+exports.default = HCardFormInput;
 
-},{"react":207}],211:[function(require,module,exports){
+},{"react":207}],212:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23742,7 +23749,9 @@ var HCardPreview = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HCardPreview).call(this, props));
 
-        _this.state = { hCard: props.hCard };
+        _this.state = {
+            hCard: props.hCard
+        };
         return _this;
     }
 
@@ -23827,6 +23836,7 @@ var HCardPreview = function (_React$Component) {
                                 "div",
                                 { className: "nine columns hCard-body-value" },
                                 this.state.hCard.suburb,
+                                this.state.hCard.state !== '' ? ', ' : '',
                                 " ",
                                 this.state.hCard.state
                             )

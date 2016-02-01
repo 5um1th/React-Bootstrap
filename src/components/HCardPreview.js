@@ -1,12 +1,14 @@
 import React from 'react';
 
 export default class HCardPreview extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {hCard: props.hCard};
-  }
-  render() {
-     return (<div className="hCard"> 
+    constructor(props) {
+        super(props);
+        this.state = {
+            hCard: props.hCard
+        };
+    }
+    render() {
+        return (<div className="hCard"> 
               <h2>HCARD PREVIEW</h2>
               <div className="hCard-wrapper">
               <div className="hCard-header">
@@ -43,7 +45,7 @@ export default class HCardPreview extends React.Component {
                      
                      </div>
                      <div className="nine columns hCard-body-value">
-                      {this.state.hCard.suburb} {this.state.hCard.state}
+                      {this.state.hCard.suburb}{(this.state.hCard.state!=='') ? ', ' : ''} {this.state.hCard.state}
                      </div>
                  </div>
                   <div className="row">
@@ -54,6 +56,6 @@ export default class HCardPreview extends React.Component {
               </div>
                  </div>
                  </div>
-     	     </div>);
-  }
+           </div>);
+    }
 }

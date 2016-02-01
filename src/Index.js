@@ -6,7 +6,7 @@ import App from './components/App';
 window.React = React;
 
 render(
-  (<Router>
+    (<Router>
     <Route path="/" component={App} />
   </Router>), document.getElementById('content')
 );
