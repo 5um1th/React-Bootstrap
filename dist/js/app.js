@@ -23707,7 +23707,7 @@ var HCardFormInput = function (_React$Component) {
                 { className: "six columns" },
                 _react2.default.createElement(
                     "label",
-                    { "for": this.props.name },
+                    { htmlFor: this.props.name },
                     this.props.label
                 ),
                 _react2.default.createElement("input", { className: "u-full-width", type: this.props.type, defaultValue: this.props.value, name: this.props.name, onChange: this.handleChange.bind(this) })

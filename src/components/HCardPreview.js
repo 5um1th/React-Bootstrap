@@ -48,12 +48,12 @@ export default class HCardPreview extends React.Component {
                       {this.state.hCard.suburb}{(this.state.hCard.state!=='') ? ', ' : ''} {this.state.hCard.state}
                      </div>
                  </div>
-                  <div className="row">
-                <div className="two columns hCard-body-label">Postcode</div>
-                <div className="four columns hCard-body-value">{this.state.hCard.postcode}</div>
-                <div className="two columns hCard-body-label">Country</div>
-                <div className="four columns hCard-body-value">{this.state.hCard.country}</div>
-              </div>
+                <div className="row">
+                     <div className="two columns hCard-body-label">Postcode</div>
+                     <div className="four columns hCard-body-value">{this.state.hCard.postcode}</div>
+                     <div className="two columns hCard-body-label">Country</div>
+                     <div className="four columns hCard-body-value">{this.state.hCard.country}</div>
+                 </div>
                  </div>
                  </div>
            </div>);
